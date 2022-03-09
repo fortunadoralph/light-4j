@@ -69,7 +69,7 @@ public class Handler {
 	static Tuple<String, Class> exceptionProcessor;
 	private static final String DEFAULT_EXCEPTION_PROCESSOR_NAME = "com.networknt.exception.DefaultExceptionProcessor";
 	private static final Map<Class<? extends Throwable>, Method> mappedMethods = new HashMap<>(16);
-	static final String STATUS_RUNTIME_EXCEPTION = "ERR10010";
+	static final String STATUS_UNCAUGHT_EXCEPTION = "ERR10011";
 
 	public static void setLastHandler(HttpHandler handler) {
 		lastHandler = handler;
@@ -380,7 +380,7 @@ public class Handler {
 	 * @return status object which include the detail exception handle result.
 	 */
 	public static Status handlerException(Throwable e) throws  Exception{
-		Status status = new Status(STATUS_RUNTIME_EXCEPTION);
+		Status status = new Status(STATUS_UNCAUGHT_EXCEPTION);
 		Method method = resolveMethod(e);
 		if (method != null) {
 			Object processorObject = exceptionProcessor.second.getDeclaredConstructor().newInstance();

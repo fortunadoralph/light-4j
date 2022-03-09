@@ -85,7 +85,11 @@ public class ExceptionHandler implements MiddlewareHandler {
                     exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "application/json");
                     exchange.getResponseSender().send(status.toString());
                 } else {
-                    setExchangeStatus(exchange, STATUS_RUNTIME_EXCEPTION);
+                    if(e instanceof RuntimeException) {
+                        setExchangeStatus(exchange, STATUS_RUNTIME_EXCEPTION);
+                    } else {
+                        setExchangeStatus(exchange, STATUS_UNCAUGHT_EXCEPTION);
+                    }
                 }
             }
         } finally {
