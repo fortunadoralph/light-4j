@@ -20,7 +20,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.networknt.client.Http2Client;
 import com.networknt.config.Config;
 import com.networknt.utility.ModuleRegistry;
-import com.networknt.handler.ProxyHandler;
 import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
 import io.undertow.server.handlers.ResponseCodeHandler;
